@@ -5,6 +5,7 @@ an experimental packet tunnelling bind shell.
 
 - TCP/UDP (source port)
 - ICMP (payload)
+- SCTP (SCTPChunkData)
 
 **Usage**
 
@@ -30,7 +31,12 @@ optional arguments:
 
 <img width="1658" alt="Screenshot 2019-12-13 at 06 30 28" src="https://user-images.githubusercontent.com/56988989/70774625-b8ac5380-1d72-11ea-82cb-7ed2c4a6e567.png">
 
-**ICMP** (control)
+**SCTP**
+
+<img width="1583" alt="Screenshot 2019-12-15 at 02 18 17" src="https://user-images.githubusercontent.com/56988989/70857201-14e1b580-1ee2-11ea-8a34-d17fcb0b13f7.png">
+
+
+**ICMP** 
 
 <img width="1664" alt="Screenshot 2019-12-13 at 06 36 18" src="https://user-images.githubusercontent.com/56988989/70774920-e396a780-1d72-11ea-96fa-7a6e1089672e.png">
 
