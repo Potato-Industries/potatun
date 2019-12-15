@@ -47,12 +47,7 @@ optional arguments:
 
 
 **Issues**
-- You will have noticed that some characters are missing in the response output in the screenshots ('rot' instead of 'root'). This is due to a workaround that is required for localhost to localhost connections whereby Scapy is unable to identify which packets are outbound or inbound. This workaround is disabled in the script. This does not affect host to host connections on separate boxes.      
-
-**Findings**   
-- wow this is pretty noisey. (potentially for TCP, maybe less noticable for UDP, you could try going slow! increase time.sleep durations between send operations)
-- ok.. now it's super slow. (yes! slow is good! stay covert.) 
-
+- You will have noticed that some characters are missing in the response output in the screenshots for UDP/TCP modes ('rot' instead of 'root'). This is due to a workaround that is required for localhost to localhost connections whereby Scapy is unable to identify which packets are outbound or inbound. This workaround is disabled in the script. This does not affect host to host connections on separate boxes.      
 
 **Disclaimer**
 
