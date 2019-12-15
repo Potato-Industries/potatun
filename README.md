@@ -7,11 +7,17 @@ an experimental packet tunnelling bind shell.
 - ICMP (payload)
 - SCTP (chunkdata)
 - IPSEC (esp)
+- Netflow (V5, netflow record source port encoding)
+
+**Requirements**
+
+- python3
+- scapy
 
 **Usage**
 
 ```
-root@kali:/opt/potatun# python3 potatun.py
+root@kali:/opt/potatun# python3 potatun.py -h
 usage: potatun.py [-h] [-i I] [-t T] [-m M]
 
 potatun - an experimental packet tunnelling bind shell.
@@ -21,8 +27,11 @@ optional arguments:
   -i I        send interface (eth0)
   -t T        send ip:port (10.10.10.1:443)
   -m M        tunnel mode (udp-c/udp-s, tcp-c/tcp-s, icmp-c/icmp-s,
-              sctp-c/sctp-s, ipsec-c/ipsec-s)
+              sctp-c/sctp-s, ipsec-c/ipsec-s, netflow-c/netflow-s)
 ```
+**Netflow (v5 record source port encoding)**
+
+<img width="1578" alt="Screenshot 2019-12-15 at 07 02 33" src="https://user-images.githubusercontent.com/56988989/70859301-52a60480-1f09-11ea-8018-22dfb603fddf.png">
 
 **UDP (source port encoding)**
 
@@ -47,7 +56,9 @@ optional arguments:
 
 
 **Issues**
-- You will have noticed that some characters are missing in the response output in the screenshots for UDP/TCP modes ('rot' instead of 'root'). This is due to a workaround that is required for localhost to localhost connections whereby Scapy is unable to identify which packets are outbound or inbound. This workaround is disabled in the script. This does not affect host to host connections on separate boxes.      
+- ~~You will have noticed that some characters are missing in the response output in the screenshots for UDP/TCP modes ('rot' instead of 'root'). This is due to a workaround that is required for localhost to localhost connections whereby Scapy is unable to identify which packets are outbound or inbound. This workaround is disabled in the script. This does not affect host to host connections on separate boxes.~~      
+
+Issue fixed - using bpf 'inbound'.
 
 **Disclaimer**
 
