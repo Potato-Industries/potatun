@@ -1,13 +1,16 @@
 
 # potatun
 
-an experimental packet tunnelling bind shell.
+an experimental packet tunnelling bind shell. 
 
 - TCP/UDP (source port encoding)
 - ICMP (payload)
 - SCTP (chunkdata)
 - IPSEC (esp)
 - Netflow (V5, netflow record source port encoding)
+- Netbios (NBNSQueryRequest, question_name)
+
+NOTE: Data encryption is used where applicable. 
 
 **Requirements**
 
@@ -27,7 +30,7 @@ optional arguments:
   -i I        send interface (eth0)
   -t T        send ip:port (10.10.10.1:443)
   -m M        tunnel mode (udp-c/udp-s, tcp-c/tcp-s, icmp-c/icmp-s,
-              sctp-c/sctp-s, ipsec-c/ipsec-s, netflow-c/netflow-s)
+              sctp-c/sctp-s, ipsec-c/ipsec-s, netflow-c/netflow-s, netbios-c/netbios-s)
 ```
 **Netflow (v5 record source port encoding)**
 
@@ -45,7 +48,6 @@ optional arguments:
 
 <img width="1583" alt="Screenshot 2019-12-15 at 02 18 17" src="https://user-images.githubusercontent.com/56988989/70857201-14e1b580-1ee2-11ea-8a34-d17fcb0b13f7.png">
 
-
 **ICMP (payload)** 
 
 <img width="1664" alt="Screenshot 2019-12-13 at 06 36 18" src="https://user-images.githubusercontent.com/56988989/70774920-e396a780-1d72-11ea-96fa-7a6e1089672e.png">
@@ -53,6 +55,10 @@ optional arguments:
 **IPSEC (esp)** 
 
 <img width="1578" alt="Screenshot 2019-12-15 at 03 46 41" src="https://user-images.githubusercontent.com/56988989/70857854-1618df80-1eee-11ea-807f-e78593d49f67.png">
+
+**NetBIOS (NBNSQueryRequest)
+
+<img width="1582" alt="Screenshot 2019-12-16 at 11 34 42" src="https://user-images.githubusercontent.com/56988989/70904113-7c8a2480-1ff8-11ea-89d0-159aa327970b.png">
 
 
 **Issues**
