@@ -56,7 +56,7 @@ optional arguments:
 
 <img width="1578" alt="Screenshot 2019-12-15 at 03 46 41" src="https://user-images.githubusercontent.com/56988989/70857854-1618df80-1eee-11ea-807f-e78593d49f67.png">
 
-**NetBIOS (NBNSQueryRequest)
+**NetBIOS (NBNSQueryRequest)**
 
 <img width="1582" alt="Screenshot 2019-12-16 at 11 34 42" src="https://user-images.githubusercontent.com/56988989/70904113-7c8a2480-1ff8-11ea-89d0-159aa327970b.png">
 
