@@ -12,7 +12,7 @@ An experimental packet tunnelling bind shell using obscure techniques to evade I
 
 NOTE: 
 - Data encryption is used where applicable.
-- Invalid use of protocols should be detected by robust SIEM. 
+- Invalid use of protocols should be detected by a properly configured SIEM. (Which is very much the case for the options above!)
 
 **Requirements**
 
