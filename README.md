@@ -1,7 +1,7 @@
 
 # potatun
 
-an experimental packet tunnelling bind shell. 
+an experimental packet tunnelling bind shell using obscure techniques
 
 - TCP/UDP (source port encoding)
 - ICMP (payload)
@@ -59,12 +59,6 @@ optional arguments:
 **NetBIOS (NBNSQueryRequest)**
 
 <img width="1582" alt="Screenshot 2019-12-16 at 11 34 42" src="https://user-images.githubusercontent.com/56988989/70904113-7c8a2480-1ff8-11ea-89d0-159aa327970b.png">
-
-
-**Issues**
-- ~~You will have noticed that some characters are missing in the response output in the screenshots for UDP/TCP modes ('rot' instead of 'root'). This is due to a workaround that is required for localhost to localhost connections whereby Scapy is unable to identify which packets are outbound or inbound. This workaround is disabled in the script. This does not affect host to host connections on separate boxes.~~      
-
-Issue fixed - using bpf 'inbound'.
 
 **Disclaimer**
 
