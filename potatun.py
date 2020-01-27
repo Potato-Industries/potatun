@@ -5,6 +5,7 @@ from prompt_toolkit import PromptSession, HTML, print_formatted_text as print
 from prompt_toolkit.styles import Style
 from prompt_toolkit.shortcuts import ProgressBar
 
+#Obfuscation.
 from Crypto.Cipher import ARC2
 
 import os
