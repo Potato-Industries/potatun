@@ -1,7 +1,7 @@
 
 # potatun
 
-an experimental packet tunnelling bind shell using obscure techniques
+An experimental packet tunnelling bind shell using obscure techniques to evade IDS/IPS.
 
 - TCP/UDP (source port encoding)
 - ICMP (payload)
@@ -10,7 +10,9 @@ an experimental packet tunnelling bind shell using obscure techniques
 - Netflow (V5, netflow record source port encoding)
 - Netbios (NBNSQueryRequest, question_name)
 
-NOTE: Data encryption is used where applicable. 
+NOTE: 
+- Data encryption is used where applicable.
+- Invalid use of protocols should be detected by robust SIEM. 
 
 **Requirements**
 
